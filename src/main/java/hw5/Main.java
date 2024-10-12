@@ -28,10 +28,8 @@ public class Main {
             System.err.println("Ошибка чтения файла: " + e.getMessage());
         }
 
-
         List<String> sortedWords = new ArrayList<>(wordCount.keySet());
         Collections.sort(sortedWords);
-
 
         System.out.println("Статистика слов:");
         for (String word : sortedWords) {
