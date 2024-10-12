@@ -13,7 +13,7 @@ public class Calculator {
         return a * b;
     }
 
-    public double divide(double a, double b) {
+    public static double divide(double a, double b) {
         if (b == 0) {
             throw new IllegalArgumentException("Деление на ноль невозможно");
         }
