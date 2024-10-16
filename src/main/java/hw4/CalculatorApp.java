@@ -25,25 +25,33 @@ public class CalculatorApp { private Calculator calculator;
             System.out.print("Выберите операцию (+, -, *, /): ");
             char operation = scanner.nextLine().charAt(0);
 
-            double result;
-            switch (operation) {
-                case '+':
-                    result = calculator.add(num1, num2);
-                    break;
-                case '-':
-                    result = calculator.subtract(num1, num2);
-                    break;
-                case '*':
-                    result = calculator.multiply(num1, num2);
-                    break;
-                case '/':
-                    result = calculator.divide(num1, num2);
-                    break;
-                default:
-                    System.out.println("Неверная операция");
-                    continue;
+            try {
+                double result;
+                switch (operation) {
+                    case '+':
+                        result = calculator.add(num1, num2);
+                        break;
+                    case '-':
+                        result = calculator.subtract(num1, num2);
+                        break;
+                    case '*':
+                        result = calculator.multiply(num1, num2);
+                        break;
+                    case '/':
+                        if (num2 == 0) {
+                            throw new ArithmeticException("Деление на ноль невозможно.");
+                        }
+                        result = calculator.divide(num1, num2);
+                        break;
+
+                    default:
+                        throw new IllegalArgumentException("Неверная операция");
+
+                }
+                System.out.println("Результат: " + result);
+            }catch (IllegalArgumentException | ArithmeticException e) {
+                System.out.println("Операция невозможна: " + e.getMessage());
             }
-            System.out.println("Результат: " + result);
         }
     }
 }

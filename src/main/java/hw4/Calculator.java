@@ -14,9 +14,6 @@ public class Calculator {
     }
 
     public static double divide(double a, double b) {
-        if (b == 0) {
-            throw new IllegalArgumentException("Деление на ноль невозможно");
-        }
         return a / b;
     }
 }
