@@ -9,8 +9,8 @@ public class Main {
         printArray();
         System.out.println();
 
-        Candy candy = new Candy("Bounty", 1, 10, 120);
-        Marmalade marmalade = new Marmalade("Fruit-tella", 2, 7, 75);
+        Candy candy = new Candy(120, 82, "Mars", "Bounty");
+        Marmalade marmalade = new Marmalade(75, 42, 400, "Fruit-tella");
         Present present = new Present(candy, marmalade);
         System.out.println(present);
 
@@ -32,7 +32,7 @@ public class Main {
 
         int maxNum = 9;
         int indexMaxNum = array[0];
-        int minNum = array[0];
+        int minNum = -9;
         int indexMinNum = array[0];
 
 
@@ -41,7 +41,7 @@ public class Main {
                 maxNum = array[i];
                 indexMaxNum = i;
             }
-            else if(array[i] < minNum) {
+            else if(array[i] < 0 && array[i] > minNum) {
                 minNum = array[i];
                 indexMinNum = i;
             }

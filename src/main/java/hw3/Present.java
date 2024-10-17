@@ -1,7 +1,6 @@
 package hw3;
 
-import javax.swing.undo.CannotUndoException;
-import java.security.PrivateKey;
+
 
 public class Present {
     private int weight;
@@ -10,11 +9,18 @@ public class Present {
     private Marmalade marmalade;
 
 
+
+
+    public Present(int price, int weight) {
+        this.weight = weight;
+        this.price = price;
+    }
+
     public Present(Candy candy, Marmalade marmalade) {
-        this.weight = candy.getWeight() + marmalade.getWeight();
-        this.price = candy.getPrice() + marmalade.getPrice();
         this.candy = candy;
         this.marmalade = marmalade;
+        weight = candy.getWeight() + marmalade.getWeight();
+        price = candy.getPrice() + marmalade.getPrice();
     }
 
 

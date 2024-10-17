@@ -1,18 +1,22 @@
 package hw3;
 
-public class Candy {
+public class Candy extends Present {
+    private String manufacturer;
+    String name;
 
-    private String name;
-    private int id;
-    private int weight;
-    private int price;
-
-
-    public Candy(String name, int id, int price, int weight) {
-        this.price = price;
-        this.weight = weight;
-        this.id = id;
+    public Candy(int price, int weight, String manufacturer, String name) {
+        super(price, weight);
+        this.manufacturer = manufacturer;
         this.name = name;
+    }
+
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     public String getName() {
@@ -23,36 +27,15 @@ public class Candy {
         this.name = name;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
 
     @Override
     public String toString() {
-        return  "\nname = " + name + "\nid = " + id + "\nweight = " + weight + "\nprice = " + price;
+        return "Candy{" +
+                "manufacturer='" + manufacturer  +
+                ", name='" + name  +
+                '}';
     }
-
-
 }
 
 
