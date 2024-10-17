@@ -1,6 +1,7 @@
 package hw2;
 
 import java.sql.SQLOutput;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -50,19 +51,47 @@ public class Main {
     }
 
 
+
+
     public static void findMaxLongestWordInArray() {
-        String[] array = {"apple", "banana", "cherry", "date", "fig", "grape", "kiwi", "lemon", "mango", "orange"};
-        String str = array[0];
-
-        for (int i = 0; i < array.length; i++) {
-
-            if (array[i].length() > str.length()) {
-                str = array[i];
+        int size = 0;
+        System.out.println("Укажите длину массива: ");
+        while (true) {
+            try {
+                size = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Введено некорректный размер массива. Введите целое число. Повторите ввод.");
+                scanner.nextLine();
+            }
+            if (size != 0) {
+                break;
             }
         }
-        System.out.println(str);
 
+
+        String[] array = new String[size];
+        for (int i = 0; i < size; i++) {
+            System.out.println("Введите слово: ");
+            array[i] = scanner.next();
+            if (size - i - 1 != 0) {
+                if (size - i - 1 == 4 || size - i - 1 == 3 || size - i - 1 == 2) {
+                    System.out.println("Осталось ввсети " + (size - i - 1) + " слова");
+                } else if (size - i - 1 == 1) {
+                    System.out.println("Осталось ввсети 1 слово.");
+                } else {
+                    System.out.println("Осталось ввсети " + (size - i - 1) + " слов");
+                }
+            } else
+                System.out.println("Массив заполнен.");
+        }
+
+
+        String max = array[0];
+        for (int i = 1; i < size; i++) {
+            if (array[i].length() > max.length()) {
+                max = array[i];
+            }
+        }
+        System.out.println("Самое длинное слово: " + max);
     }
-
-
 }
