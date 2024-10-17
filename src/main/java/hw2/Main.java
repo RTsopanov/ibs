@@ -1,6 +1,6 @@
 package hw2;
 
-import java.sql.SQLOutput;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -60,7 +60,7 @@ public class Main {
             try {
                 size = scanner.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Введено некорректный размер массива. Введите целое число. Повторите ввод.");
+                System.out.println("Введен некорректный размер массива. Введите целое число. Повторите ввод.");
                 scanner.nextLine();
             }
             if (size != 0) {
