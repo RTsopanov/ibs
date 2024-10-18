@@ -19,36 +19,31 @@ public class CalculatorApp { private Calculator calculator;
             }
 
             System.out.print("Введите второе число: ");
-            double num1 = Double.parseDouble(input1);
-            double num2 = Double.parseDouble(scanner.nextLine());
+            calculator.setA(Double.parseDouble(input1));
+            calculator.setB(Double.parseDouble(scanner.nextLine()));
+
 
             System.out.print("Выберите операцию (+, -, *, /): ");
             char operation = scanner.nextLine().charAt(0);
 
             try {
-                double result;
                 switch (operation) {
                     case '+':
-                        result = calculator.add(num1, num2);
+                        calculator.add(calculator.getA(), calculator.getB());
                         break;
                     case '-':
-                        result = calculator.subtract(num1, num2);
+                        calculator.subtract(calculator.getA(), calculator.getB());
                         break;
                     case '*':
-                        result = calculator.multiply(num1, num2);
+                        calculator.multiply(calculator.getA(), calculator.getB());
                         break;
                     case '/':
-                        if (num2 == 0) {
-                            throw new ArithmeticException("Деление на ноль невозможно.");
-                        }
-                        result = calculator.divide(num1, num2);
+                        calculator.divide(calculator.getA(), calculator.getB());
                         break;
-
                     default:
                         throw new IllegalArgumentException("Неверная операция");
-
                 }
-                System.out.println("Результат: " + result);
+                System.out.println("Результат: " + calculator.getResult());
             }catch (IllegalArgumentException | ArithmeticException e) {
                 System.out.println("Операция невозможна: " + e.getMessage());
             }
