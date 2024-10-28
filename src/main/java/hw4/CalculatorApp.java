@@ -2,7 +2,8 @@ package hw4;
 
 import java.util.Scanner;
 
-public class CalculatorApp { private Calculator calculator;
+public class CalculatorApp {
+    private Calculator calculator;
     private Scanner scanner;
 
     public CalculatorApp() {
@@ -12,13 +13,32 @@ public class CalculatorApp { private Calculator calculator;
 
     public void start() {
         while (true) {
+            double a;
+            double b;
             System.out.print("Введите первое число или exit для выхода: ");
             String input1 = scanner.nextLine();
             if (input1.equalsIgnoreCase("exit")) {
                 break;
             }
 
+            try {
+                a = Double.parseDouble(input1);
+            } catch (NumberFormatException e) {
+                System.out.println("Введено некорректное значение");
+                continue;
+            }
+
+
             System.out.print("Введите второе число: ");
+            String input2 = scanner.nextLine();
+            try {
+                b = Double.parseDouble(input2);
+            } catch (NumberFormatException e) {
+                System.out.println("Введено некорректное значение");
+                continue;
+            }
+
+
             calculator.setA(Double.parseDouble(input1));
             calculator.setB(Double.parseDouble(scanner.nextLine()));
 
@@ -44,7 +64,7 @@ public class CalculatorApp { private Calculator calculator;
                         throw new IllegalArgumentException("Неверная операция");
                 }
                 System.out.println("Результат: " + calculator.getResult());
-            }catch (IllegalArgumentException | ArithmeticException e) {
+            } catch (IllegalArgumentException | ArithmeticException e) {
                 System.out.println("Операция невозможна: " + e.getMessage());
             }
         }
